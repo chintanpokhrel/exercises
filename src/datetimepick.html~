@@ -1,0 +1,125 @@
+<html>
+<head>
+  <!-- ... -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="bootstrap-datetimepicker.min.css" />
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class='col-sm-4'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+	<div class='col-sm-4'>
+        	<input type='text' id="interval" value=''/>
+        </div>
+	<div class='col-sm-4'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker2'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+<input type="button" id="clearBtn">
+	
+        <script type='text/javascript'>
+<!--
+            $(function () {
+		$("#clearBtn").click(function(){
+			$('#datetimepicker2').data("DateTimePicker").clear();
+		});
+                $('#datetimepicker1').datetimepicker({
+    			format: 'MM/DD/YYYY HH:mm'
+		});
+		$('#datetimepicker2').datetimepicker({
+    			format: 'MM/DD/YYYY HH:mm'
+		});
+
+		$('#datetimepicker1').on('dp.change', function (e) {
+			var now  = "04/09/2013 15:00:00";
+			var then = "02/09/2013 14:20:30";
+
+			var ms = e.date.diff($('#datetimepicker2').data('DateTimePicker').date());
+			var d = moment.duration(ms);
+			var s = Math.floor(d.asHours()) ;
+			//+ moment.utc(ms).format(":mm:ss");
+
+			//console.log(s);
+			
+			//console.log($('#datetimepicker2').data('DateTimePicker').date());
+			//var dur = moment.duration(time2.diff(time1));
+			//var hours = dur.asHours();
+			$('#interval').val(s);
+            		//$('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+        	});
+            });
+//-->
+        </script>
+    </div>
+
+<!--<div class="container">
+    <div class='col-md-5'>
+        <div class="form-group">
+            <div class='input-group date' id='datetimepicker6'>
+                <input type='text' class="form-control" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class='col-md-5'>
+        <div class="form-group">
+            <div class='input-group date' id='datetimepicker7'>
+                <input type='text' class="form-control" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+	var now  = "04/09/2013 15:00:00";
+	var then = "02/09/2013 14:20:30";
+
+	var ms = moment(now,"DD/MM/YYYY HH:mm:ss").diff(moment(then,"DD/MM/YYYY HH:mm:ss"));
+	var d = moment.duration(ms);
+	var s = Math.floor(d.asHours()) + moment.utc(ms).format(":mm:ss");
+
+	console.log(s);
+
+        $('#datetimepicker6').datetimepicker();
+        $('#datetimepicker7').datetimepicker({
+            useCurrent: false //Important! See issue #1075
+        });
+        $("#datetimepicker6").on("dp.change", function (e) {
+            $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+	    console.log($('#datetimepicker7').data("DateTimePicker").format("hh:mm:ss"));
+        });
+        $("#datetimepicker7").on("dp.change", function (e) {
+            $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+        });
+    });
+</script>
+</div>-->
+
+  <script type="text/javascript" src="moment.min.js"></script>
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="bootstrap-datetimepicker.min.js"></script>
+
+
+<body>
+</hmtl>

@@ -1,0 +1,5 @@
+#ifndef _merge_file_h
+#define _merge_file_h
+void merge_sorted_files(int data[][10], int, int *);
+#endif
+

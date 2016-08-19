@@ -1,0 +1,10 @@
+CFLAGS=-Wall -g
+
+all:	main
+
+main:	sort_test.o
+
+sort_test.o:	max_heap.o	heap_sort.o
+
+clean:
+	rm -f main.o	sort_test.o	max_heap.o	heap_sort.o

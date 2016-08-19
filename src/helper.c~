@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include "helper.h"
+
+void print_array(int *arr, int n){
+	int i;
+	for(i=0; i<n; ++i){
+		printf("%d ", arr[i]);
+	}
+	printf("\n");
+}
+
+void print_array(float *arr, int n){
+	int i;
+	for(i=0; i<n; ++i){
+		printf("%f ", arr[i]);
+	}
+	printf("\n");
+}
