@@ -14,7 +14,8 @@ typedef struct List{
 List *create_List();
 void destroy_List(List *);
 List *push_List(List *, int);
+void sort_List(List *);
 
-
+void print_List(List *);
 
 #endif
