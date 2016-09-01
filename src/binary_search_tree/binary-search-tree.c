@@ -53,14 +53,33 @@ int insert_node(BST* bst, int val){
 	return 0;
 }
 
-int find_max(BST* bst){
-	node* cur = bst->root;
+int find_max(BST *bst){
+	node *cur = bst->root;
 	
 	while(cur && cur->rchild){
 		cur = cur->rchild;
 	}
 	return cur->val;
 }
+
+int find_min(BST *bst){
+	if(!bst || !bst->root){
+		return -1; //need to handle this case for empty bst
+	}
+	node *min_node = find_min_node(bst->root);
+	return min_node ? min_node->val : -1; 
+}
+
+node *find_min_node(node *root){
+	node *cur = root;
+	
+	while(cur && cur->lchild){
+		cur = cur->lchild;
+	}
+	return cur;
+}
+
+
 
 node* search(BST* bst, int val){
 	node* cur = bst->root;
@@ -76,6 +95,9 @@ node* search(BST* bst, int val){
 	return NULL;
 }
 
+
+
+
 void inorder_traversal(BST* bst, int* arr){
 	inorder(bst->root, arr);
 }
@@ -90,5 +112,32 @@ void inorder(node* n, int* arr){
 	}
 }
 
-
+node *get_successor(BST *tree, int val){
+	node *cur = tree->root;
+	node *parent = NULL;
+	while(cur){
+		if(val > cur->val){
+			if(!cur->rchild){
+				return parent;
+			}
+			parent = cur;
+			cur = cur->rchild;
+		}else if(val < cur->val){
+			if(!cur->lchild){
+				return cur;
+			}
+			parent = cur;
+			cur = cur->lchild;
+		}else{
+			if(cur->rchild){
+				return find_min_node(cur->rchild);
+			}else{
+				if(parent->lchild==cur)
+					return parent;
+				return NULL;
+			}
+		}
+	}
+	return NULL;
+}
 
