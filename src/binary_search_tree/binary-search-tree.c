@@ -79,7 +79,14 @@ node *find_min_node(node *root){
 	return cur;
 }
 
-
+node *find_max_node(node *root){
+	node *cur = root;
+	
+	while(cur && cur->rchild){
+		cur = cur->rchild;
+	}
+	return cur;
+}
 
 node* search(BST* bst, int val){
 	node* cur = bst->root;
@@ -115,7 +122,7 @@ void inorder(node* n, int* arr){
 node *get_successor(BST *tree, int val){
 	node *cur = tree->root;
 	node *parent = NULL;
-	while(cur){
+	/*while(cur){
 		if(val > cur->val){
 			if(!cur->rchild){
 				return parent;
@@ -137,7 +144,36 @@ node *get_successor(BST *tree, int val){
 				return NULL;
 			}
 		}
+	}*/
+	//I completely missed such an elegant solution !
+	while(cur){
+		if(val < cur->val){
+			parent = cur;
+			cur = cur->lchild;
+		}else{
+			cur = cur->rchild;
+		}
+		
 	}
-	return NULL;
+	return parent;
 }
+
+
+node *get_predecessor(BST *bst, int val){
+	node *cur = bst->root;
+	node *so_far_predecessor = NULL;
+	while(cur){
+		if(val > cur->val){
+			so_far_predecessor = cur;
+			cur = cur->rchild;
+		}else{
+			cur = cur->lchild;
+		}
+	}
+	return so_far_predecessor;
+}
+
+
+
+
 

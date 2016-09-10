@@ -1,5 +1,6 @@
 #include "bst_test.h"
 #include "binary-search-tree.h"
+#include "k_largest.c"
 #include <stdio.h>
  
 void bst_test(){
@@ -53,11 +54,79 @@ void bst_test(){
 		printf("Successor of 6 not found!\n");
 	}
 	
+	n = get_successor(bst, 0);
+	if(n){
+		printf("Successor of 0 in the tree is: %d\n", n->val);
+	}else{
+		printf("Successor of 0 not found!\n");
+	}
+	
+	n = get_predecessor(bst, 7);
+	if(n){
+		printf("predecessor of 7 in the tree is: %d\n", n->val);
+	}else{
+		printf("predecessor of 7 not found!\n");
+	}
+	
+	n = get_predecessor(bst, 1);
+	if(n){
+		printf("predecessor of 1 in the tree is: %d\n", n->val);
+	}else{
+		printf("predecessor of 1 not found!\n");
+	}
+	
+	n = get_predecessor(bst, 16);
+	if(n){
+		printf("predecessor of 16 in the tree is: %d\n", n->val);
+	}else{
+		printf("predecessor of 16 not found!\n");
+	}
+	
+	n = get_predecessor(bst, 6);
+	if(n){
+		printf("predecessor of 6 in the tree is: %d\n", n->val);
+	}else{
+		printf("predecessor of 6 not found!\n");
+	}
+	
+	n = get_predecessor(bst, 0);
+	if(n){
+		printf("predecessor of 0 in the tree is: %d\n", n->val);
+	}else{
+		printf("predecessor of 0 not found!\n");
+	}
+	
+	
 	printf("Inorder Traversal: ");
 	inorder_traversal(bst, arr);
 	print_array(arr, 10);
 	
 }	
+
+void k_largest_test(){
+	int arr[] = {1, 10, 9, 7, 8, 11, 5, 4, 3, 15};
+	BST* bst = create_bst();
+	build_bst(bst, arr, 10);
+	int *k_largest = get_k_largest(bst, 0);
+	if(k_largest){
+		printf("Test Failed with k_largest for k=0\n");
+	}else{
+		printf("Test passed with k_largest for k=0\n");
+	}
+	//printf("First among 0 largest elements(Nonsense): %d ", k_largest[0]);
+	k_largest = get_k_largest(bst, 1);
+	printf("1 largest element: ");
+	print_array(k_largest, 1);
+	
+	k_largest = get_k_largest(bst, 5);
+	printf("5 largest element: ");
+	print_array(k_largest, 5);
+	
+	k_largest = get_k_largest(bst, 20);
+	printf("20 largest element: ");
+	print_array(k_largest, 10);
+	
+}
 
 void print_array(int *arr, int n){
 	int i;
@@ -68,6 +137,7 @@ void print_array(int *arr, int n){
 }
 
 int main(){
-	bst_test();
+	//bst_test();
+	k_largest_test();
 	return 0;
 }
