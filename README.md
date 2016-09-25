@@ -6,6 +6,6 @@ Statistics:
 
 Number of Lines of Code:
 
-C: 3367
+C: 3811
 PYTHON: 607
-C HEADER: 347
+C HEADER: 351

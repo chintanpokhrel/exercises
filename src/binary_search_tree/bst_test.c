@@ -1,6 +1,7 @@
 #include "bst_test.h"
 #include "binary-search-tree.h"
 #include "k_largest.c"
+#include "bst_lca.c"
 #include <stdio.h>
  
 void bst_test(){
@@ -128,6 +129,23 @@ void k_largest_test(){
 	
 }
 
+
+void bst_lca_test(){
+	int arr[] = {1, 10, 9, 7, 8, 11, 5, 4, 3, 15};
+	BST* bst = create_bst();
+	build_bst(bst, arr, 10);
+	
+	node *n1 = get_predecessor(bst, 15);
+	node *n2 = get_successor(bst, 8);
+	
+	node *lca = get_LCA(bst, n1, n2);
+	if(!lca){
+		printf("LCA for predecessor of 7 and successor of 1 not found!\n");
+	}else{
+		printf("LCA: %d\n", lca->val);
+	}
+}
+
 void print_array(int *arr, int n){
 	int i;
 	for(i=0; i<n; ++i){
@@ -138,6 +156,7 @@ void print_array(int *arr, int n){
 
 int main(){
 	//bst_test();
-	k_largest_test();
+	//k_largest_test();
+	bst_lca_test();
 	return 0;
 }
